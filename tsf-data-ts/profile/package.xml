@@ -1,0 +1,11 @@
+<?xml version="1.0" ?>
+<package version="1.0">
+    <description>Statistical profiling</description>
+    <author mailto="maxim.menshikov@interpretica.io" />
+    <session track_conf="silent">
+        <prologue><script name="prologue"><objective>Prepare the profile group.</objective></script></prologue>
+        <epilogue><script name="epilogue"><objective>Finalize the profile group.</objective></script></epilogue>
+        <run><script name="reference"><objective>Every statistic against Python statistics over the same file.</objective></script></run>
+        <run><script name="approx"><objective>Approximate profiles under memory limits: named algorithms, honoured error bounds.</objective></script></run>
+    </session>
+</package>

@@ -1,0 +1,11 @@
+<?xml version="1.0" ?>
+<package version="1.0">
+    <description>Resource cleanup and temporary files</description>
+    <author mailto="maxim.menshikov@interpretica.io" />
+    <session track_conf="silent">
+        <prologue><script name="prologue"><objective>Prepare the robust group.</objective></script></prologue>
+        <epilogue><script name="epilogue"><objective>Finalize the robust group.</objective></script></epilogue>
+        <run><script name="cleanup"><objective>Nothing left behind after failures: spill files, handles, partial output.</objective></script></run>
+        <run><script name="tempfiles"><objective>Spill files unlinked and 0600 while in use; gone after completion or a kill.</objective></script><arg name="end"><value>finish</value><value>kill</value></arg></run>
+    </session>
+</package>

@@ -1,0 +1,20 @@
+<?xml version="1.0" ?>
+<package version="1.0">
+    <description>File formats and sources</description>
+    <author mailto="maxim.menshikov@interpretica.io" />
+    <session track_conf="silent">
+        <prologue><script name="prologue"><objective>Prepare the formats group.</objective></script></prologue>
+        <epilogue><script name="epilogue"><objective>Finalize the formats group.</objective></script></epilogue>
+        <run>
+            <script name="roundtrip"><objective>The same logical rows through every format: generated, read back, converted.</objective></script>
+            <arg name="format"><value>csv</value><value>json</value><value>jsonl</value><value>parquet</value></arg>
+        </run>
+        <run><script name="inference"><objective>Schema inference per type, explicit override, sample size.</objective></script></run>
+        <run><script name="interop"><objective>Parquet against pyarrow, both directions; nested and unusual physical types.</objective></script></run>
+        <run><script name="sqlite"><objective>SQL query results as datasets.</objective></script></run>
+        <run>
+            <script name="corrupted"><objective>Corrupted and truncated inputs: refused with a reason, or counted.</objective></script>
+            <arg name="kind"><value>trunc_quote_csv</value><value>bad_fields_csv</value><value>trunc_json</value><value>trunc_jsonl</value><value>trunc_parquet</value><value>garbage_parquet</value><value>empty_csv</value><value>missing_file</value></arg>
+        </run>
+    </session>
+</package>

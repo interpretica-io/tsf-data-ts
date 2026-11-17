@@ -1,0 +1,71 @@
+<?xml version="1.0" ?>
+<package version="1.0">
+    <description>tsf-data dataset validation suite</description>
+
+    <!-- @page data-ts Dataset Validation Suite
+          @objective Exercise tsf-data against fixtures with an exact,
+                     known set of defects, on the agent the suite runs on.
+
+          @par Test Groups:
+          - formats - CSV, JSON, JSON Lines, Parquet, SQLite; corruption
+          - schema - validation, evolution, nested types, coercion
+          - quality - data quality assertions and TE verdicts
+          - profile - statistics against an independent oracle
+          - compare - every comparison mode and option
+          - pipeline - ETL validation against a pipeline with defects
+          - generate - deterministic synthetic data
+          - scale - large datasets in bounded memory
+          - robust - resource cleanup after failures
+
+          @par Notes:
+          - The datasets stay on the agent; the engine runs in its RPC
+            server. Only bounded samples and reports reach the engine.
+          - The fixtures and the facts asserted against them come from
+            lib/py/datagen.py, run on the agent with the Python standard
+            library and pyarrow: code that shares nothing with the module.
+    -->
+
+    <author mailto="maxim.menshikov@interpretica.io" />
+
+    <session track_conf="silent">
+        <!-- @page data-ts-prologue Test Suite Prologue
+              @objective Prepare the test environment.
+
+              @par Scenario:
+              -# Nothing to do: each test opens its own session and makes
+                 its own fixtures.
+        -->
+        <prologue>
+            <script name="prologue">
+                <objective>
+                    Prepare the test environment.
+                    @md
+                </objective>
+            </script>
+        </prologue>
+
+        <!-- @page data-ts-epilogue Test Suite Epilogue
+              @objective Finalize the test environment.
+        -->
+        <epilogue>
+            <script name="epilogue">
+                <objective>
+                    Finalize the test environment.
+                    @md
+                </objective>
+            </script>
+        </epilogue>
+
+        <run>
+            <package name="formats" />
+            <package name="schema" />
+            <package name="quality" />
+            <package name="profile" />
+            <package name="compare" />
+            <package name="pipeline" />
+            <package name="generate" />
+            <package name="scale" />
+            <package name="robust" />
+        </run>
+    </session>
+</package>

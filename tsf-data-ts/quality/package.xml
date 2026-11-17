@@ -1,0 +1,11 @@
+<?xml version="1.0" ?>
+<package version="1.0">
+    <description>Data quality assertions</description>
+    <author mailto="maxim.menshikov@interpretica.io" />
+    <session track_conf="silent">
+        <prologue><script name="prologue"><objective>Prepare the quality group.</objective></script></prologue>
+        <epilogue><script name="epilogue"><objective>Finalize the quality group.</objective></script></epilogue>
+        <run><script name="checks"><objective>Each assertion counts exactly the planted defects; the threshold decides.</objective></script><arg name="check"><value>nulls</value><value>unique</value><value>range</value><value>pattern</value><value>reference</value><value>freshness</value><value>distribution</value><value>pii</value></arg></run>
+        <run><script name="verdict"><objective>Failing assertions become TE verdicts TRC can match.</objective></script><arg name="dataset"><value>clean</value><value>defective</value></arg></run>
+    </session>
+</package>

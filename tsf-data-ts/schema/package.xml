@@ -1,0 +1,13 @@
+<?xml version="1.0" ?>
+<package version="1.0">
+    <description>Schema validation</description>
+    <author mailto="maxim.menshikov@interpretica.io" />
+    <session track_conf="silent">
+        <prologue><script name="prologue"><objective>Prepare the schema group.</objective></script></prologue>
+        <epilogue><script name="epilogue"><objective>Finalize the schema group.</objective></script></epilogue>
+        <run><script name="validation"><objective>Strict validation against a contract, with one known-bad control per violation kind.</objective></script></run>
+        <run><script name="evolution"><objective>Backward-compatible schema evolution: strict vs compatible over six versions.</objective></script></run>
+        <run><script name="nested"><objective>Nested arrays and objects against nested schemas.</objective></script></run>
+        <run><script name="coercion"><objective>Opt-in, reported type coercion; text interpretation is not coercion.</objective></script></run>
+    </session>
+</package>

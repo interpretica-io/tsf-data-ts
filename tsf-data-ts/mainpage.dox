@@ -1,0 +1,14 @@
+/** @mainpage
+
+This suite exercises tsf-data - dataset validation on the Test Agent
+where the data lives - against fixtures whose defects are known exactly.
+
+The fixtures and the oracle are written on the agent by lib/py/datagen.py
+with the Python standard library (csv, json, statistics, sqlite3) and,
+when installed, pyarrow: independent implementations of every format and
+statistic the module computes. A test asserts tsf-data reports exactly
+the defects the generator planted and exactly the statistics Python
+computed. Numeric results go out as MI measurement artifacts, so the HTML
+log and Bublik draw them as graphs.
+
+*/

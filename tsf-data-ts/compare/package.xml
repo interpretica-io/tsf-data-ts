@@ -1,0 +1,12 @@
+<?xml version="1.0" ?>
+<package version="1.0">
+    <description>Dataset comparison</description>
+    <author mailto="maxim.menshikov@interpretica.io" />
+    <session track_conf="silent">
+        <prologue><script name="prologue"><objective>Prepare the compare group.</objective></script></prologue>
+        <epilogue><script name="epilogue"><objective>Finalize the compare group.</objective></script></epilogue>
+        <run><script name="modes"><objective>Every comparison mode against a known set of differences.</objective></script><arg name="mode"><value>exact</value><value>unordered</value><value>key</value><value>schema</value><value>distribution</value></arg></run>
+        <run><script name="options"><objective>NULL semantics, duplicates, tolerances, subsets, report bounds.</objective></script></run>
+        <run><script name="reproducible"><objective>The same report whatever the partitioning, run after run, within the memory limit.</objective></script></run>
+    </session>
+</package>

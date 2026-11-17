@@ -1,0 +1,15 @@
+repositories:
+  - name: tsf_data
+    # Published (public) at https://github.com/interpretica-io/tsf-data.git,
+    # so the Builder clones it over HTTPS with no credentials - including
+    # inside the Docker build container. To build an unpushed local change,
+    # point url at the checkout beside the suite instead (the parent
+    # directory is mounted into the container, so an absolute path to it
+    # resolves there too) and leave ref as main. The Builder clones the
+    # committed HEAD, not the working tree.
+    url: https://github.com/interpretica-io/tsf-data.git
+    ref: main
+    libs:
+      - ta_data
+      - rpcs_data
+      - tapi_data

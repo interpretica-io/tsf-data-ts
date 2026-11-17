@@ -1,0 +1,11 @@
+<?xml version="1.0" ?>
+<package version="1.0">
+    <description>ETL/ELT pipeline validation</description>
+    <author mailto="maxim.menshikov@interpretica.io" />
+    <session track_conf="silent">
+        <prologue><script name="prologue"><objective>Prepare the pipeline group.</objective></script></prologue>
+        <epilogue><script name="epilogue"><objective>Finalize the pipeline group.</objective></script></epilogue>
+        <run><script name="etl"><objective>A validation battery catches exactly the defect injected into the pipeline.</objective></script><arg name="bug"><value>ok</value><value>drop</value><value>dup</value><value>append</value><value>agg</value><value>orphan</value><value>schema</value></arg></run>
+        <run><script name="incremental"><objective>Incremental loads, late arrivals, idempotent re-processing.</objective></script><arg name="mode"><value>ok</value><value>append</value></arg></run>
+    </session>
+</package>

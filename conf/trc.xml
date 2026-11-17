@@ -1,0 +1,524 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<trc_db unknown_exp_status="passed_ok">
+  <test name="tsf-data-ts" type="package">
+    <objective>Dataset Validation Test Suite</objective>
+    <notes />
+    <iter result="PASSED">
+      <notes />
+      <test name="prologue" type="script">
+        <objective>Test suite prologue</objective>
+        <notes />
+        <iter result="PASSED">
+          <notes />
+        </iter>
+      </test>
+      <test name="formats" type="package">
+        <objective>File formats and sources</objective>
+        <notes />
+        <iter result="PASSED">
+          <notes />
+          <test name="prologue" type="script">
+            <objective>Group prologue</objective>
+            <notes />
+            <iter result="PASSED">
+              <notes />
+            </iter>
+          </test>
+          <test name="roundtrip" type="script">
+            <objective>The same logical rows through every format: generated, read back, converted.</objective>
+            <notes />
+            <iter result="PASSED">
+              <arg name="format">csv</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="format">json</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="format">jsonl</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="format">parquet</arg>
+              <notes />
+            </iter>
+          </test>
+          <test name="inference" type="script">
+            <objective>Schema inference per type, explicit override, sample size.</objective>
+            <notes />
+            <iter result="PASSED">
+              <notes />
+            </iter>
+          </test>
+          <test name="interop" type="script">
+            <objective>Parquet against pyarrow, both directions; nested and unusual physical types.</objective>
+            <notes />
+            <iter result="PASSED">
+              <notes />
+            </iter>
+          </test>
+          <test name="sqlite" type="script">
+            <objective>SQL query results as datasets.</objective>
+            <notes />
+            <iter result="PASSED">
+              <notes />
+            </iter>
+          </test>
+          <test name="corrupted" type="script">
+            <objective>Corrupted and truncated inputs: refused with a reason, or counted.</objective>
+            <notes />
+            <iter result="PASSED">
+              <arg name="kind">trunc_quote_csv</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="kind">bad_fields_csv</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="kind">trunc_json</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="kind">trunc_jsonl</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="kind">trunc_parquet</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="kind">garbage_parquet</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="kind">empty_csv</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="kind">missing_file</arg>
+              <notes />
+            </iter>
+          </test>
+          <test name="epilogue" type="script">
+            <objective>Group epilogue</objective>
+            <notes />
+            <iter result="PASSED">
+              <notes />
+            </iter>
+          </test>
+        </iter>
+      </test>
+      <test name="schema" type="package">
+        <objective>Schema validation</objective>
+        <notes />
+        <iter result="PASSED">
+          <notes />
+          <test name="prologue" type="script">
+            <objective>Group prologue</objective>
+            <notes />
+            <iter result="PASSED">
+              <notes />
+            </iter>
+          </test>
+          <test name="validation" type="script">
+            <objective>Strict validation against a contract, with one known-bad control per violation kind.</objective>
+            <notes />
+            <iter result="PASSED">
+              <notes />
+            </iter>
+          </test>
+          <test name="evolution" type="script">
+            <objective>Backward-compatible schema evolution: strict vs compatible over six versions.</objective>
+            <notes />
+            <iter result="PASSED">
+              <notes />
+            </iter>
+          </test>
+          <test name="nested" type="script">
+            <objective>Nested arrays and objects against nested schemas.</objective>
+            <notes />
+            <iter result="PASSED">
+              <notes />
+            </iter>
+          </test>
+          <test name="coercion" type="script">
+            <objective>Opt-in, reported type coercion; text interpretation is not coercion.</objective>
+            <notes />
+            <iter result="PASSED">
+              <notes />
+            </iter>
+          </test>
+          <test name="epilogue" type="script">
+            <objective>Group epilogue</objective>
+            <notes />
+            <iter result="PASSED">
+              <notes />
+            </iter>
+          </test>
+        </iter>
+      </test>
+      <test name="quality" type="package">
+        <objective>Data quality assertions</objective>
+        <notes />
+        <iter result="PASSED">
+          <notes />
+          <test name="prologue" type="script">
+            <objective>Group prologue</objective>
+            <notes />
+            <iter result="PASSED">
+              <notes />
+            </iter>
+          </test>
+          <test name="checks" type="script">
+            <objective>Each assertion counts exactly the planted defects; the threshold decides.</objective>
+            <notes />
+            <iter result="PASSED">
+              <arg name="check">nulls</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="check">unique</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="check">range</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="check">pattern</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="check">reference</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="check">freshness</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="check">distribution</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="check">pii</arg>
+              <notes />
+            </iter>
+          </test>
+          <test name="verdict" type="script">
+            <objective>Failing assertions become TE verdicts TRC can match.</objective>
+            <notes />
+            <iter result="PASSED">
+              <arg name="dataset">clean</arg>
+              <notes />
+            </iter>
+            <iter result="FAILED">
+              <arg name="dataset">defective</arg>
+              <notes>Expected: the defective dataset fails its quality checks, one verdict each.</notes>
+              <results>
+                <result value="FAILED">
+                  <verdict>Data quality: unique check of order_id: 3 violation(s) in 1003 row(s), 0 allowed</verdict>
+                  <verdict>Data quality: reference check of customer_id: 6 violation(s) in 1003 row(s), 0 allowed</verdict>
+                  <verdict>Data quality: nulls check of email: 7 violation(s) in 1003 row(s), 0 allowed</verdict>
+                </result>
+              </results>
+            </iter>
+          </test>
+          <test name="epilogue" type="script">
+            <objective>Group epilogue</objective>
+            <notes />
+            <iter result="PASSED">
+              <notes />
+            </iter>
+          </test>
+        </iter>
+      </test>
+      <test name="profile" type="package">
+        <objective>Statistical profiling</objective>
+        <notes />
+        <iter result="PASSED">
+          <notes />
+          <test name="prologue" type="script">
+            <objective>Group prologue</objective>
+            <notes />
+            <iter result="PASSED">
+              <notes />
+            </iter>
+          </test>
+          <test name="reference" type="script">
+            <objective>Every statistic against Python statistics over the same file.</objective>
+            <notes />
+            <iter result="PASSED">
+              <notes />
+            </iter>
+          </test>
+          <test name="approx" type="script">
+            <objective>Approximate profiles under memory limits: named algorithms, honoured error bounds.</objective>
+            <notes />
+            <iter result="PASSED">
+              <notes />
+            </iter>
+          </test>
+          <test name="epilogue" type="script">
+            <objective>Group epilogue</objective>
+            <notes />
+            <iter result="PASSED">
+              <notes />
+            </iter>
+          </test>
+        </iter>
+      </test>
+      <test name="compare" type="package">
+        <objective>Dataset comparison</objective>
+        <notes />
+        <iter result="PASSED">
+          <notes />
+          <test name="prologue" type="script">
+            <objective>Group prologue</objective>
+            <notes />
+            <iter result="PASSED">
+              <notes />
+            </iter>
+          </test>
+          <test name="modes" type="script">
+            <objective>Every comparison mode against a known set of differences.</objective>
+            <notes />
+            <iter result="PASSED">
+              <arg name="mode">exact</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="mode">unordered</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="mode">key</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="mode">schema</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="mode">distribution</arg>
+              <notes />
+            </iter>
+          </test>
+          <test name="options" type="script">
+            <objective>NULL semantics, duplicates, tolerances, subsets, report bounds.</objective>
+            <notes />
+            <iter result="PASSED">
+              <notes />
+            </iter>
+          </test>
+          <test name="reproducible" type="script">
+            <objective>The same report whatever the partitioning, run after run, within the memory limit.</objective>
+            <notes />
+            <iter result="PASSED">
+              <notes />
+            </iter>
+          </test>
+          <test name="epilogue" type="script">
+            <objective>Group epilogue</objective>
+            <notes />
+            <iter result="PASSED">
+              <notes />
+            </iter>
+          </test>
+        </iter>
+      </test>
+      <test name="pipeline" type="package">
+        <objective>ETL/ELT pipeline validation</objective>
+        <notes />
+        <iter result="PASSED">
+          <notes />
+          <test name="prologue" type="script">
+            <objective>Group prologue</objective>
+            <notes />
+            <iter result="PASSED">
+              <notes />
+            </iter>
+          </test>
+          <test name="etl" type="script">
+            <objective>A validation battery catches exactly the defect injected into the pipeline.</objective>
+            <notes />
+            <iter result="PASSED">
+              <arg name="bug">ok</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="bug">drop</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="bug">dup</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="bug">append</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="bug">agg</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="bug">orphan</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="bug">schema</arg>
+              <notes />
+            </iter>
+          </test>
+          <test name="incremental" type="script">
+            <objective>Incremental loads, late arrivals, idempotent re-processing.</objective>
+            <notes />
+            <iter result="PASSED">
+              <arg name="mode">ok</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="mode">append</arg>
+              <notes />
+            </iter>
+          </test>
+          <test name="epilogue" type="script">
+            <objective>Group epilogue</objective>
+            <notes />
+            <iter result="PASSED">
+              <notes />
+            </iter>
+          </test>
+        </iter>
+      </test>
+      <test name="generate" type="package">
+        <objective>Synthetic data generation</objective>
+        <notes />
+        <iter result="PASSED">
+          <notes />
+          <test name="prologue" type="script">
+            <objective>Group prologue</objective>
+            <notes />
+            <iter result="PASSED">
+              <notes />
+            </iter>
+          </test>
+          <test name="determinism" type="script">
+            <objective>Same seed, same rows and bytes, in every format; independent column streams.</objective>
+            <notes />
+            <iter result="PASSED">
+              <notes />
+            </iter>
+          </test>
+          <test name="generators" type="script">
+            <objective>Each generator keeps its statistical promise; injected defects are what the reader finds.</objective>
+            <notes />
+            <iter result="PASSED">
+              <notes />
+            </iter>
+          </test>
+          <test name="epilogue" type="script">
+            <objective>Group epilogue</objective>
+            <notes />
+            <iter result="PASSED">
+              <notes />
+            </iter>
+          </test>
+        </iter>
+      </test>
+      <test name="scale" type="package">
+        <objective>Large datasets in bounded memory</objective>
+        <notes />
+        <iter result="PASSED">
+          <notes />
+          <test name="prologue" type="script">
+            <objective>Group prologue</objective>
+            <notes />
+            <iter result="PASSED">
+              <notes />
+            </iter>
+          </test>
+          <test name="memory" type="script">
+            <objective>Count, profile, unique and compare a dataset far larger than the memory limit.</objective>
+            <notes />
+            <iter result="PASSED">
+              <arg name="rows">2000000</arg>
+              <arg name="mem_limit">8m</arg>
+              <arg name="format">csv</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="rows">2000000</arg>
+              <arg name="mem_limit">8m</arg>
+              <arg name="format">parquet</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="rows">30000000</arg>
+              <arg name="mem_limit">32m</arg>
+              <arg name="format">csv</arg>
+              <notes />
+            </iter>
+          </test>
+          <test name="epilogue" type="script">
+            <objective>Group epilogue</objective>
+            <notes />
+            <iter result="PASSED">
+              <notes />
+            </iter>
+          </test>
+        </iter>
+      </test>
+      <test name="robust" type="package">
+        <objective>Resource cleanup and temporary files</objective>
+        <notes />
+        <iter result="PASSED">
+          <notes />
+          <test name="prologue" type="script">
+            <objective>Group prologue</objective>
+            <notes />
+            <iter result="PASSED">
+              <notes />
+            </iter>
+          </test>
+          <test name="cleanup" type="script">
+            <objective>Nothing left behind after failures: spill files, handles, partial output.</objective>
+            <notes />
+            <iter result="PASSED">
+              <notes />
+            </iter>
+          </test>
+          <test name="tempfiles" type="script">
+            <objective>Spill files unlinked and 0600 while in use; gone after completion or a kill.</objective>
+            <notes />
+            <iter result="PASSED">
+              <arg name="end">finish</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="end">kill</arg>
+              <notes />
+            </iter>
+          </test>
+          <test name="epilogue" type="script">
+            <objective>Group epilogue</objective>
+            <notes />
+            <iter result="PASSED">
+              <notes />
+            </iter>
+          </test>
+        </iter>
+      </test>
+      <test name="epilogue" type="script">
+        <objective>Test suite epilogue</objective>
+        <notes />
+        <iter result="PASSED">
+          <notes />
+        </iter>
+      </test>
+    </iter>
+  </test>
+</trc_db>

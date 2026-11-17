@@ -1,0 +1,11 @@
+<?xml version="1.0" ?>
+<package version="1.0">
+    <description>Large datasets in bounded memory</description>
+    <author mailto="maxim.menshikov@interpretica.io" />
+    <session track_conf="silent">
+        <prologue><script name="prologue"><objective>Prepare the scale group.</objective></script></prologue>
+        <epilogue><script name="epilogue"><objective>Finalize the scale group.</objective></script></epilogue>
+        <run><script name="memory"><objective>Count, profile, unique and compare a dataset far larger than the memory limit.</objective></script><arg name="rows"><value>2000000</value></arg><arg name="mem_limit"><value>8m</value></arg><arg name="format"><value>csv</value><value>parquet</value></arg></run>
+        <run><script name="memory"><objective>The same over a multi-gigabyte dataset.</objective><req id="LONG_TERM" /></script><arg name="rows"><value>30000000</value></arg><arg name="mem_limit"><value>32m</value></arg><arg name="format"><value>csv</value></arg></run>
+    </session>
+</package>

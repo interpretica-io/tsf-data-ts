@@ -1,0 +1,11 @@
+<?xml version="1.0" ?>
+<package version="1.0">
+    <description>Synthetic data generation</description>
+    <author mailto="maxim.menshikov@interpretica.io" />
+    <session track_conf="silent">
+        <prologue><script name="prologue"><objective>Prepare the generate group.</objective></script></prologue>
+        <epilogue><script name="epilogue"><objective>Finalize the generate group.</objective></script></epilogue>
+        <run><script name="determinism"><objective>Same seed, same rows and bytes, in every format; independent column streams.</objective></script></run>
+        <run><script name="generators"><objective>Each generator keeps its statistical promise; injected defects are what the reader finds.</objective></script></run>
+    </session>
+</package>
